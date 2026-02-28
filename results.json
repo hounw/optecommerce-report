@@ -1,0 +1,122 @@
+{
+    "Dominio": "example.com",
+    "Fecha": "2025-02-28 18:25:30",
+    "Resultados": [
+        {
+            "Categoría": "General",
+            "Sección": "General",
+            "Elemento": "Core Web Vitals (LCP, Interactividad, CLS) y optimización de imágenes (WebP)",
+            "Impacto": "Alto",
+            "Peso": 5,
+            "Nota": "36%",
+            "Puntaje": 1.80
+        },
+        {
+            "Categoría": "General",
+            "Sección": "General",
+            "Elemento": "Ley del botón (si se ve como botón es botón) y áreas táctiles amplias en móvil",
+            "Impacto": "Alto",
+            "Peso": 5,
+            "Nota": "91%",
+            "Puntaje": 4.56
+        },
+        {
+            "Categoría": "General",
+            "Sección": "General",
+            "Elemento": "Claridad de oferta (E-commerce candy): badges, métodos de pago, tiempos, garantías",
+            "Impacto": "Alto",
+            "Peso": 5,
+            "Nota": "26%",
+            "Puntaje": 1.30
+        },
+        {
+            "Categoría": "General",
+            "Sección": "General",
+            "Elemento": "Top-bar con incentivos claros (costos de envío, envío gratis, promos actuales)",
+            "Impacto": "Medio",
+            "Peso": 3,
+            "Nota": "37%",
+            "Puntaje": 1.12
+        },
+        {
+            "Categoría": "General",
+            "Sección": "General",
+            "Elemento": "Botón de WhatsApp flotante o chat de soporte accesible",
+            "Impacto": "Alto",
+            "Peso": 5,
+            "Nota": "46%",
+            "Puntaje": 2.31
+        },
+        {
+            "Categoría": "General",
+            "Sección": "General",
+            "Elemento": "Llamadas a la acción (CTAs) claras en páginas de error 404, búsquedas vacías y blog",
+            "Impacto": "Bajo",
+            "Peso": 1,
+            "Nota": "31%",
+            "Puntaje": 0.31
+        },
+        {
+            "Categoría": "General",
+            "Sección": "General",
+            "Elemento": "Uso adecuado y no intrusivo de pop-ups (ej. intent-exit o con retraso de tiempo)",
+            "Impacto": "Medio",
+            "Peso": 3,
+            "Nota": "96%",
+            "Puntaje": 2.88
+        },
+        {
+            "Categoría": "General",
+            "Sección": "General",
+            "Elemento": "Configuración correcta de analíticas (GA4, Meta Pixel, Conversion API)",
+            "Impacto": "Alto",
+            "Peso": 5,
+            "Nota": "26%",
+            "Puntaje": 1.32
+        },
+        {
+            "Categoría": "General",
+            "Sección": "General",
+            "Elemento": "Cumplimiento de accesibilidad básica (contraste de colores, textos Alt en imágenes)",
+            "Impacto": "Medio",
+            "Peso": 3,
+            "Nota": "73%",
+            "Puntaje": 2.19
+        },
+        {
+            "Categoría": "General",
+            "Sección": "Navigation",
+            "Elemento": "Menú de navegación con 4-7 opciones por nivel, accionables como elemento principal",
+            "Impacto": "Alto",
+            "Peso": 5,
+            "Nota": "89%",
+            "Puntaje": 4.45
+        }
+    ],
+    "Recomendaciones": [
+        {
+            "Categoría": "General",
+            "Sección": "Navigation",
+            "Recomendación": "Optimizar el menú de navegación para que tenga entre 4 y 7 opciones por nivel, asegurando que cada opción sea accionable como elemento principal.",
+            "Prioridad": "Alta"
+        },
+        {
+            "Categoría": "General",
+            "Sección": "Navigation",
+            "Recomendación": "Optimizar el menú de navegación para que tenga entre 4 y 7 opciones por nivel, asegurando que cada opción sea accionable como elemento principal.",
+            "Prioridad": "Alta"
+        },
+        {
+            "Categoría": "General",
+            "Sección": "Navigation",
+            "Recomendación": "Optimizar el menú de navegación para que tenga entre 4 y 7 opciones por nivel, asegurando que cada opción sea accionable como elemento principal.",
+            "Prioridad": "Alta"
+        },
+        {
+            "Categoría": "General",
+            "Sección": "Navigation",
+            "Recomendación": "Optimizar el menú de navegación para que tenga entre 4 y 7 opciones por nivel, asegurando que cada opción sea accionable como elemento principal.",
+            "Prioridad": "Alta"
+        }
+    ]
+}
