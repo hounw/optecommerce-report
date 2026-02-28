@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-$password_default = 'root';
+require_once 'config.php';
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['password'])) {
-    if ($_POST['password'] === $password_default) {
+    if ($_POST['password'] === $password) {
         $_SESSION['authenticated'] = true;
         header("Location: " . $_SERVER['PHP_SELF']);
         exit;
