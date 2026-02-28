@@ -155,6 +155,9 @@ $totalPeso = 0;
 $totalPuntaje = 0;
 
 foreach ($resultados as $res) {
+    if (isset($res['Nota']) && $res['Nota'] === 'N/A') {
+        continue; // Skip N/A elements
+    }
     $totalPeso += $res['Peso'] ?? 0;
     $totalPuntaje += $res['Puntaje'] ?? 0;
 }
@@ -164,6 +167,8 @@ $scorePercentageFormat = number_format($scorePercentage, 2);
 
 function getGrade($score)
 {
+    if ($score === 'N/A')
+        return 'N/A';
     if ($score >= 90)
         return 'A';
     if ($score >= 80)
@@ -177,6 +182,8 @@ function getGrade($score)
 
 function getGradeColor($grade)
 {
+    if ($grade === 'N/A')
+        return '#9e9e9e'; // Grey for N/A
     switch ($grade) {
         case 'A':
             return '#4CAF50'; // Green
@@ -216,6 +223,9 @@ function calculateCategoryScore($sections)
     $puntaje = 0;
     foreach ($sections as $secName => $items) {
         foreach ($items as $i) {
+            if (isset($i['Nota']) && $i['Nota'] === 'N/A') {
+                continue;
+            }
             $peso += $i['Peso'] ?? 0;
             $puntaje += $i['Puntaje'] ?? 0;
         }
@@ -761,13 +771,16 @@ function calculateCategoryScore($sections)
                             </thead>
                             <tbody>
                                 <?php foreach ($items as $item):
-            $notaStr = str_replace('%', '', $item['Nota']);
-            $itemScore = floatval($notaStr);
+            $isNA = (isset($item['Nota']) && $item['Nota'] === 'N/A');
+            $notaStr = $isNA ? 'N/A' : str_replace('%', '', $item['Nota']);
+            $itemScore = $isNA ? 'N/A' : floatval($notaStr);
             $itemGrade = getGrade($itemScore);
             $itemColor = getGradeColor($itemGrade);
 ?>
                                 <tr>
-                                    <td data-label="Elemento Evaluado" style="font-weight: 500; font-size: 0.95rem;">
+                                    <td data-label="Elemento Evaluado"
+                                        style="font-weight: 500; font-size: 0.95rem; <?php if ($isNA)
+                echo 'color: var(--text-muted); text-decoration: line-through; opacity: 0.8;'?>">
                                         <?php echo htmlspecialchars($item['Elemento']); ?>
                                     </td>
                                     <td data-label="Grado" class="col-grade">
@@ -775,7 +788,9 @@ function calculateCategoryScore($sections)
                                             <?php echo $itemGrade; ?>
                                         </span>
                                     </td>
-                                    <td data-label="Puntaje" class="col-score">
+                                    <td data-label="Puntaje" class="col-score" <?php if ($isNA)
+                                       
+                echo 'style="color: var(--text-muted);"'?>>
                                         <?php echo htmlspecialchars($item['Nota']); ?>
                                     </td>
                                 </tr>
