@@ -1,4 +1,138 @@
 <?php
+session_start();
+
+$password_default = 'root';
+$error = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['password'])) {
+    if ($_POST['password'] === $password_default) {
+        $_SESSION['authenticated'] = true;
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit;
+    }
+    else {
+        $error = 'Contraseña incorrecta';
+    }
+}
+
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit;
+}
+
+if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+?>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Restringido - Opt-ecommerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f53d39;
+            --bg-light: #f9f9fb;
+            --text-dark: #1f2937;
+            --radius: 12px;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background-color: var(--bg-light);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: var(--text-dark);
+        }
+
+        .login-card {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-card h2 {
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+        }
+
+        .btn {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .error {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-card">
+        <h2>🔒 Área Restringida</h2>
+        <?php if ($error): ?>
+        <div style="color: var(--primary); font-size: 0.9rem; margin-bottom: 1rem;">
+            <?php echo htmlspecialchars($error); ?>
+        </div>
+        <?php
+    endif; ?>
+        <form method="POST">
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Contraseña de acceso" required>
+            </div>
+            <button type="submit" class="btn">Ver Reporte</button>
+        </form>
+    </div>
+</body>
+
+</html>
+<?php
+    exit;
+}
+
 // Leer el archivo json
 $jsonFile = 'results.json';
 if (!file_exists($jsonFile)) {
@@ -715,6 +849,11 @@ endif; ?>
             <p>Implementa estas mejoras y transforma tu tráfico en ventas tangibles. Impulsa tu facturación de
                 inmediato.</p>
             <a href="#" class="btn">Solicitar Asistencia Técnica</a>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="?logout=1" style="color: var(--text-muted); text-decoration: underline; font-size: 0.9rem;">Cerrar
+                Sesión</a>
         </div>
 
     </div>
