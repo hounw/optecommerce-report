@@ -4,9 +4,13 @@ session_start();
 require_once 'config.php';
 $error = '';
 
+// Generate a unique session key based on the directory path
+// This prevents sharing the login state across multiple instances on the same domain
+$session_key = 'auth_' . md5(__DIR__);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['password'])) {
     if ($_POST['password'] === $password) {
-        $_SESSION['authenticated'] = true;
+        $_SESSION[$session_key] = true;
         header("Location: " . $_SERVER['PHP_SELF']);
         exit;
     }
@@ -16,12 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['password'])) {
 }
 
 if (isset($_GET['logout'])) {
-    session_destroy();
+    unset($_SESSION[$session_key]);
     header("Location: " . $_SERVER['PHP_SELF']);
     exit;
 }
 
-if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+if (!isset($_SESSION[$session_key]) || $_SESSION[$session_key] !== true) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
