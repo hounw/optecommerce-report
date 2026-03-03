@@ -71,8 +71,8 @@
             "Elemento": "Configuración correcta de analíticas (GA4, Meta Pixel, Conversion API)",
             "Impacto": "Alto",
             "Peso": 5,
-            "Nota": "26%",
-            "Puntaje": 1.32
+            "Nota": "N/A",
+            "Puntaje": null
         },
         {
             "Categoría": "General",
